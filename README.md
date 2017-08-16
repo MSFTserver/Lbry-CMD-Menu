@@ -1,10 +1,8 @@
-#LBRY CMD Menu
-
-##Created by: MSFTserver
-
-######a AIO CMD for everything LBRY
-######Check For Updates on GitHib Please
-######https://github.com/MSFTserver/Lbry-CMD-Menu
+# **LBRY CMD Menu**
+## **Created by: MSFTserver**
+###### a AIO CMD for everything LBRY
+###### Check For Updates on GitHib Please
+###### https://github.com/MSFTserver/Lbry-CMD-Menu
 
 **Instructions:**
 1. Start Editing the .bat in any text editor of choice
@@ -23,7 +21,7 @@
 5. All CLI Outputs for account info and more is in the Log file(LbryMenuLog.txt)
 
 
-######**message @MSFTserver on lbry's slack if you have any questions**
+###### **message @MSFTserver on lbry's slack if you have any questions**
 or use one of options below
 **ContactSocial Info:**
 [E-mail: msftserver@gmail.com](mailto:msftserver@gmail.com)
