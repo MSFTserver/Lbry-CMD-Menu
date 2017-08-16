@@ -24,10 +24,15 @@
 ###### **message @MSFTserver on lbry's slack if you have any questions**
 or use one of options below
 **ContactSocial Info:**
-[E-mail: msftserver@gmail.com](mailto:msftserver@gmail.com)
-[Twitter: @MSFTserver](https://twitter.com/MSFTserver)
-[Github: @MSFTserver](https://github.com/MSFTserver)
-[Crypto Instagram: @MSFTserver](https://www.instagram.com/msftserver/)
-[Main Instagram: @MSFTserver](https://www.instagram.com/compvapelife/)
-[Discord: @MSFTserver#2901](https://discord.gg/Ce3t3FW)
 
+[E-mail: msftserver@gmail.com](mailto:msftserver@gmail.com)
+
+[Twitter: @MSFTserver](https://twitter.com/MSFTserver)
+
+[Github: @MSFTserver](https://github.com/MSFTserver)
+
+[Crypto Instagram: @MSFTserver](https://www.instagram.com/msftserver/)
+
+[Main Instagram: @MSFTserver](https://www.instagram.com/compvapelife/)
+
+[Discord: @MSFTserver#2901](https://discord.gg/Ce3t3FW)
