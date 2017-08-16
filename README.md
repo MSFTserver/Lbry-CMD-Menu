@@ -1,6 +1,6 @@
-#**LBRY CMD Menu**
+#LBRY CMD Menu
 
-##**Created by: MSFTserver**
+##Created by: MSFTserver
 
 ######a AIO CMD for everything LBRY
 ######Check For Updates on GitHib Please
