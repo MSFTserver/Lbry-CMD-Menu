@@ -4,7 +4,7 @@ a AIO CMD for everything LBRY
 Check For Updates on GitHib Please
 https://github.com/MSFTserver/Lbry-CMD-Menu
 ________________________________________________________________________________________________________
-###### **Instructions:**
+**Instructions:**
 ###### 1. Start Editing the .bat in any text editor of choice
 ###### 2. Edit the first section labeled: "User Defined Settings & Configs"
 ###### 3. enter the path's to the folders of the appropriate programs
@@ -12,7 +12,7 @@ ________________________________________________________________________________
 ###### 4. Start the daemon Then wait atleast 1min to start the App!
 ######    (Otherwise this windows becomes the Daemon Host Window)
 _____________________________________________________________________________________________________________
-###### **Important Notes:**
+**Important Notes:**
 ###### 1. If App Started Before Daemon This CMD Will Become The Daemon Host Window
 ###### 2. If the Lbry-App(LBRY.exe) Errors out it will cover menu but is still usable
 ###### 3. Upon Closing This CMD Window Will Close The LBRY.exe if Launched With This App
