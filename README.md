@@ -4,7 +4,7 @@ a AIO CMD for everything LBRY
 
 Check For Updates on GitHib Please
 
-https://github.com/MSFTserver/Lbry-CMD-Menu
+https://github.com/MSFTserver/Lbry-CMD-Menu/releases
 ________________________________________________________________________________________________________
 **Instructions:**
 ###### 1. Start Editing the .bat in any text editor of choice
@@ -23,6 +23,7 @@ ________________________________________________________________________________
 ###### 5. All CLI Outputs for account info and more is in the Log file(LbryMenuLog.txt)
 ______________________________________________________________________________________________________________
 **message @MSFTserver on lbry's slack if you have any questions**
+
 or use one of options below
 
 **ContactSocial Info:**
