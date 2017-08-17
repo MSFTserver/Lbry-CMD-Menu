@@ -495,13 +495,12 @@ echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
 echo Send LBC to Another Address. %logg%
-echo Note: this was impplemented in lbrynet version 0.15
-echo       anything lower will error out
 set /p SendAmount= Amount(LBC): 
 ping localhost -n 2 >nul
 echo Provide a Address to Send (%SendAmount%)LBC to %logg%
 set /p SendAddress= Address: 
 echo Sending (%SendAmount%)LBC To Address(%SendAddress%) %logg%
+echo if it returns (true) transaction completed
 ping localhost -n 2 >nul
 cd "%DaemonCLIexeLocation%"
 %CLIname% send_amount_to_address %SendAmount% %SendAddress% %logg%
