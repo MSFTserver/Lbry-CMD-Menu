@@ -1,0 +1,3 @@
+Change Log
+v1.1 - Added More Menus and CLI commands
+v1.0 - First Realese
