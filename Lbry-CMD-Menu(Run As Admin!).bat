@@ -6,7 +6,7 @@ set DaemonCLIexeLocation=C:\Program Files (x86)\LBRY\resources\app\dist
 set LBRYname=LBRY.exe
 set DaemonName=lbrynet-daemon.exe
 set CLIname=lbrynet-cli.exe
-set BatchFileLocation=C:\Users\Administrator\Desktop\Lbry-CMD-Menu
+set BatchFileLocation=C:\Users\sawye\Desktop\Lbry-CMD-Menu
 Rem User Defined Settings & Configs
 ::END
 ::
@@ -79,7 +79,7 @@ echo %Logoline7% %logg%
 echo %WelcomeText% %logg%
 ping localhost -n 5 >nul
 cls
-goto :menu
+goto :MainMenu
 Rem Welcome Text
 ::END
 ::
@@ -88,7 +88,7 @@ Rem Welcome Text
 ::
 ::START
 Rem Main Menu
-:menu
+:MainMenu
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -100,15 +100,13 @@ echo %Logoline7%
 echo          ////////////////////////////////////////////////////////// %logg%
 echo         //                    Lbry Main Menu                    // %logg%
 echo        ////////////////////////////////////////////////////////// %logg%
-echo       //sd - Start Lbry Daemon  //b - Check Wallet Balance    // %logg%
-echo      //sa - Start Lbry App     //wl - Check List of Wallets  // %logg%
-echo     //ka - Kill the App       //cl - Check List of Channels // %logg%
-echo    //kd - Kill the Daemon    //                            // %logg%
-echo   //kb - Kill App and Daemon//n - Important Notes!        // %logg%
-echo  //k - Kill all Processes  //e - Exit This Window        // %logg%
+echo       //sd - Start Lbry Daemon   //w - Wallet Menu            // %logg%
+echo      //sa - Start Lbry App      //h - Help and Info Menu     // %logg%
+echo     //ka - Kill the App        //                           // %logg%
+echo    //kd - Kill the Daemon     //                           // %logg%
+echo   //kb - Kill App and Daemon //                           // %logg%
+echo  //k - Kill all Processes   //e - Exit This Window       // %logg%
 echo ////////////////////////////////////////////////////////// %logg%
-echo Note: Upon Closing This CMD Window it Will Close The LBRY.exe
-echo       if Launched With This App
 set /p OptionMainMenu= Menu Selection:  
 if %OptionMainMenu%==sa goto :App
 if %OptionMainMenu%==sd goto :Daemon
@@ -117,14 +115,93 @@ if %OptionMainMenu%==kd goto :exitDaemon
 if %OptionMainMenu%==ka goto :exitAPP
 if %OptionMainMenu%==kb goto :exitAPPandDAEMON
 if %OptionMainMenu%==k goto :exitALL
-if %OptionMainMenu%==n goto :ImportantNotes
-if %OptionMainMenu%==b goto :CheckBalance
-if %OptionMainMenu%==wl goto :WalletList
-if %OptionMainMenu%==cl goto :ChannelList
+if %OptionMainMenu%==h goto :InfoMenu
+if %OptionMainMenu%==w goto :WalletMenu
 echo invalid selection %logg%
 ping localhost -n 3 >nul
-goto :menu
+goto :MainMenu
 Rem Main Menu
+::END
+::
+::
+::
+::
+::START
+Rem Wallet Menu
+:WalletMenu
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo          ////////////////////////////////////////////////////////// %logg%
+echo         //                    Lbry Wallet Menu                  // %logg%
+echo        ////////////////////////////////////////////////////////// %logg%
+echo       //b - Current Balance       //a - Address Unused/Empty  // %logg%
+echo      //w - List of Wallets       //g - Generate new address  // %logg%
+echo     //c - List of Channel's     //cc - Custom Command       // %logg%
+echo    //u - List of URI Claims    //cl - Custom Command List  // %logg%
+echo   //t - Transaction List      //h - Help and Info Menu    // %logg%
+echo  //s - Send LBC              //m - Main Menu             // %logg%
+echo ////////////////////////////////////////////////////////// %logg%
+set /p OptionWalletMenu= Menu Selection:  
+if %OptionWalletMenu%==b goto :CheckBalance
+if %OptionWalletMenu%==w goto :WalletList
+if %OptionWalletMenu%==c goto :ChannelList
+if %OptionWalletMenu%==u goto :AllClaims
+if %OptionWalletMenu%==t goto :TransactionList
+if %OptionWalletMenu%==s goto :SendLBC
+if %OptionWalletMenu%==cc goto :CustomCommand
+if %OptionWalletMenu%==cl goto :CommandList
+if %OptionWalletMenu%==a goto :UnusedAddress
+if %OptionWalletMenu%==g goto :GenerateNewAddress
+if %OptionWalletMenu%==h goto :InfoMenu
+if %OptionWalletMenu%==m goto :MainMenu
+echo invalid selection %logg%
+ping localhost -n 3 >nul
+goto :WalletMenu
+Rem Wallet Menu 
+::END
+::
+::
+::
+::
+::START
+Rem Info and Help Menu
+:InfoMenu
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo          ///////////////////////////////////////////////////////// %logg%
+echo         //                 Lbry Info/Help Menu                 // %logg%
+echo        ///////////////////////////////////////////////////////// %logg%
+echo       //n - Important Notes!      //                         // %logg%
+echo      //s - Lbry Status           //                         // %logg%
+echo     //v - Lbry Version info     //                         // %logg%
+echo    //d - Get Daemon Settings   //b - Report Bug           // %logg%
+echo   //                          //w - Wallet Menu          // %logg%
+echo  //                          //m - Main Menu            // %logg%
+echo ///////////////////////////////////////////////////////// %logg%
+set /p OptionInfoMenu= Menu Selection: 
+if %OptionInfoMenu%==n goto :ImportantNotes
+if %OptionInfoMenu%==w goto :WalletMenu
+if %OptionInfoMenu%==m goto :MainMenu
+if %OptionInfoMenu%==s goto :LbryStatus
+if %OptionInfoMenu%==v goto :LbryVersion
+if %OptionInfoMenu%==d goto :DaemonSettings
+if %OptionInfoMenu%==b goto :ReportBug
+echo invalid selection %logg%
+ping localhost -n 3 >nul
+goto :InfoMenu
+Rem Info and Help Menu 
 ::END
 ::
 ::
@@ -147,7 +224,7 @@ start %LBRYname%
 ping localhost -n 5 >nul 
 echo LBRY-App Started %logg%
 pause >nul|set/p =Press any Key to Go Back To Menu
-goto :menu
+goto :MainMenu
 Rem run Lbry App w/out Daemon Window
 ::END
 ::
@@ -174,7 +251,7 @@ echo Daemon Service Started %logg%
 echo Note: Let This Run For Atleast a minute Before Starting The App(LBRY.exe)
 ping localhost -n 5 >nul
 pause >nul|set/p =Press any Key to Go Back To Menu
-goto :menu
+goto :MainMenu
 Rem run Lbry daemon
 ::END
 ::
@@ -209,6 +286,54 @@ echo ////////////////////////////////////////////////////////////////
 ping localhost -n 6 >nul
 goto :RunExitMenu
 Rem Important Notes!
+::END
+::
+::
+::
+::
+::START
+Rem Check Lbry Status
+:LbryStatus
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Checking Lbry Status Please Wait a Moment %logg%
+ping localhost -n 2 >nul
+echo Status: %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% status %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Check Lbry Status
+::END
+::
+::
+::
+::
+::START
+Rem Check Lbry Version
+:LbryVersion
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Checking Lbry Version Please Wait a Moment %logg%
+ping localhost -n 2 >nul
+echo Version: %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% version %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Check Lbry Version
 ::END
 ::
 ::
@@ -287,13 +412,239 @@ Rem Your Channel List
 ::
 ::
 ::START
-Rem RunExitMenu after starting app(s)
+Rem Gets Daemon Settings
+:DaemonSettings
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Getting Daemon Settings %logg%
+ping localhost -n 2 >nul
+echo Daemon Settings: %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% settings_get %logg%
+ping localhost -n 7 >nul
+goto :RunExitMenu
+Rem Gets Daemon Settings
+::END
+::
+::
+::
+::
+::START
+Rem All Your URI Claims
+:AllClaims
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Checking All Claims Associated With Account %logg%
+ping localhost -n 2 >nul
+echo My Claims: %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% claim_list_mine %logg%
+ping localhost -n 7 >nul
+goto :RunExitMenu
+Rem All Your URI Claims
+::END
+::
+::
+::
+::
+::START
+Rem List of Your Transactions
+:TransactionList
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Checking All Transactions Associated With Account %logg%
+ping localhost -n 2 >nul
+echo My Transactions: %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% transaction_list %logg%
+ping localhost -n 7 >nul
+goto :RunExitMenu
+Rem List of Your Transactions
+::END
+::
+::
+::
+::
+::START
+Rem Send LBC to Address
+:SendLBC
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Send LBC to Another Address. %logg%
+echo Note: this was impplemented in lbrynet version 0.15
+echo       anything lower will error out
+set /p SendAmount= Amount(LBC): 
+ping localhost -n 2 >nul
+echo Provide a Address to Send (%SendAmount%)LBC to %logg%
+set /p SendAddress= Address: 
+echo Sending (%SendAmount%)LBC To Address(%SendAddress%) %logg%
+ping localhost -n 2 >nul
+cd "%DaemonCLIexeLocation%"
+%CLIname% send_amount_to_address %SendAmount% %SendAddress% %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Send LBC to Address
+::END
+::
+::
+::
+::
+::START
+Rem Unused Wallet Address
+:UnusedAddress
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Finding address containing no balance, will create a new address if there is none. %logg%
+ping localhost -n 2 >nul
+echo Wallet Address: %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% wallet_unused_address %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Unused Wallet Address
+::END
+::
+::
+::
+::
+::START
+Rem Generate New Wallet Address
+:GenerateNewAddress
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Generating New Wallet Address. %logg%
+ping localhost -n 2 >nul
+echo Wallet Address: %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% wallet_new_address %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Generate New Wallet Address
+::END
+::
+::
+::
+::
+::START
+Rem Custom Commands List for CLI
+:CommandList
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Loading Custom Commands List %logg%
+echo List is from CLI API docs %logg%
+ping localhost -n 3 >nul
+echo Commands: %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% commands %logg%
+ping localhost -n 7 >nul
+goto :RunExitMenu
+Rem Custom Commands List for CLI
+::END
+::
+::
+::
+::
+::START
+Rem Custom Command runner
+:CustomCommand
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo enter the custom command as you would normally for the cli %logg%
+echo just continue where "%CLIname%" leaves off for command %logg%
+set /p UserCommand=%CLIname% 
+ping localhost -n 2 >nul
+cd "%DaemonCLIexeLocation%"
+%CLIname% %UserCommand% %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Custom Command runner
+::END
+::
+::
+::
+::
+::START
+Rem Custom Command runner
+:ReportBug
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo enter the message to send to slack for report %logg%
+set /p BugMessage= 
+ping localhost -n 2 >nul
+cd "%DaemonCLIexeLocation%"
+%CLIname% report_bug %BugMessage% %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Custom Command runner
+::END
+::
+::
+::
+::
+::START
+Rem RunExitMenu after stuff
 :RunExitMenu
-echo Press (m) for menu and (q) to quit
+echo Press (m) for Main Menu,(w) for Wallet Menu,(h) for Help and Info Menu, and (q) to quit CMD.
 set /p OptionStart= Option: 
 if %OptionStart%==q goto :exitCMD
-if %OptionStart%==m goto :menu
-goto :menu
+if %OptionStart%==m goto :MainMenu
+if %OptionStart%==w goto :WalletMenu
+if %OptionStart%==h goto :InfoMenu
+goto :MainMenu
 Rem RunExitMenu after starting app(s)
 ::END
 ::
