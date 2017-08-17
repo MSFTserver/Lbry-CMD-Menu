@@ -22,6 +22,13 @@ ________________________________________________________________________________
 ###### (it may cause the app to crash if launhced to early)
 ###### 5. All CLI Outputs for account info and more is in the Log file(LbryMenuLog.txt)
 ______________________________________________________________________________________________________________
+## **Screen Shots:**
+![Main Menu](http://i.imgur.com/Cjex8aT.png)
+
+![Wallet Menu](http://i.imgur.com/AU0yJa2.png)
+
+![Info Menu](http://i.imgur.com/TzV2B56.png)
+
 **message @MSFTserver on lbry's slack if you have any questions**
 
 or use one of options below
