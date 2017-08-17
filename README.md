@@ -12,7 +12,8 @@ ________________________________________________________________________________
 ###### 3. enter the path's to the folders of the appropriate programs
 ######    (default paths have been left you may need to change username in path accordingly)
 ###### 4. Start the daemon Then wait atleast 1min to start the App!
-######    (Otherwise this windows becomes the Daemon Host Window)
+######    (Otherwise the app will throw an error and force close itself)
+######    (Also with app started Before Daemon This CMD Becomes the Daemon Host this also allows the menu options and functions to work inside the daemon so it can use teh cli inside the daemon)
 _____________________________________________________________________________________________________________
 **Important Notes:**
 ###### 1. If App Started Before Daemon This CMD Will Become The Daemon Host Window
