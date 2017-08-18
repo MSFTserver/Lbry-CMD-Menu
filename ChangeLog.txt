@@ -1,4 +1,7 @@
 Change Log
 v1.2 - Updated Send LBC echo's
-v1.1 - Added More Menus and CLI commands
+     - Added Almost All CLI Commands
+     - 2 New Wallet Menus
+v1.1 - Added More Menus 
+     - Added new CLI commands
 v1.0 - First Realese
