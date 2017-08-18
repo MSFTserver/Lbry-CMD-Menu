@@ -11,11 +11,11 @@ Rem CMD Window Options
 ::START
 Rem User Defined Settings & Configs
 set LBRYexeLocation=C:\Program Files (x86)\LBRY
-set DaemonCLIexeLocation=C:\Program Files (x86)\LBRY\resources\app\dist
+set DaemonCLIexeLocation=%LBRYexeLocation%\resources\app\dist
 set LBRYname=LBRY.exe
 set DaemonName=lbrynet-daemon.exe
 set CLIname=lbrynet-cli.exe
-set BatchFileLocation=C:\Users\%username%\Desktop\Lbry-CMD-Menu
+set BatchFileLocation=%~dp0
 Rem User Defined Settings & Configs
 ::END
 ::
