@@ -15,7 +15,7 @@ set DaemonCLIexeLocation=C:\Program Files (x86)\LBRY\resources\app\dist
 set LBRYname=LBRY.exe
 set DaemonName=lbrynet-daemon.exe
 set CLIname=lbrynet-cli.exe
-set BatchFileLocation=C:\Users\sawye\Desktop\Lbry-CMD-Menu
+set BatchFileLocation=C:\Users\%username%\Desktop\Lbry-CMD-Menu
 Rem User Defined Settings & Configs
 ::END
 ::
