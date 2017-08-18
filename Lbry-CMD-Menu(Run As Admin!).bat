@@ -304,7 +304,6 @@ if %OptionInfoMenu%==s goto :LbryStatus
 if %OptionInfoMenu%==v goto :LbryVersion
 if %OptionInfoMenu%==d goto :DaemonSettings
 if %OptionInfoMenu%==b goto :ReportBug
-if %OptionInfoMenu%==c goto :Clock
 echo invalid selection %logg%
 ping localhost -n 3 >nul
 goto :InfoMenu
