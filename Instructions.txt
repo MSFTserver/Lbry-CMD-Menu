@@ -11,8 +11,9 @@
 //              1) Start Editing the .bat in any text editor of choice                     //
 //              2) Edit the first section labeled: "User Defined Settings & Configs"       //
 //              3) enter the path's to the folders of the appropriate programs             //
-//     (default paths have been left you may need to change username in path accordingly)  //
-//              4) Start the daemon Then wait atleast 1min to start the App!               //
+//                 (default paths have been left)                                          //
+//              4) Start the daemon Then wait atleast 1min or all blobs to finish          //
+//                 proccessing to start the App!                                           //
 //                 (Otherwise the app will throw an error and force close itself)          //
 //                 (Also with app started Before Daemon This CMD Becomes the Daemon Host   //
 //                  this also allows the menu options and functions to work inside the     //
