@@ -1291,7 +1291,8 @@ Rem Stream Cost Estimate
 ::
 ::
 ::START
-Rem Publis:Publish
+Rem Publisb
+:Publish
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -1301,6 +1302,8 @@ echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
 echo Coming Soon!
+ping localhost -n 5 >nul
+goto :RunExitMenu
 Rem Publish
 ::END
 ::
