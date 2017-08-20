@@ -19,11 +19,11 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // Important Notes:                                                                           //
-//       2) If the Lbry-App(LBRY.exe) Errors out it will cover menu but is still usable       //
-//       3) Upon Closing This CMD Window Will Close The LBRY.exe if Launched With This App    //
-//       4) If Starting Daemon Before LBRY-App wait atleast 1 minute before starting the app  //
+//       1) If the Lbry-App(LBRY.exe) Errors out it will cover menu but is still usable       //
+//       2) Upon Closing This CMD Window Will Close The LBRY.exe if Launched With This App    //
+//       3) If Starting Daemon Before LBRY-App wait atleast 1 minute before starting the app  //
 //          (it may cause the app to crash if launhced to early)                              //
-//       5) All CLI Outputs for account info and more is in the Log file(LbryMenuLog.txt)     //
+//       4) All CLI Outputs for account info and more is in the Log file(LbryMenuLog.txt)     //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////
