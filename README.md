@@ -6,7 +6,7 @@ Check For Updates on GitHib Please
 
 https://github.com/MSFTserver/Lbry-CMD-Menu/releases
 ________________________________________________________________________________________________________
-**Instructions:**
+**Dev Instructions:**
 ###### 1. Start Editing the .bat in any text editor of choice
 ###### 2. Edit the first section labeled: "User Defined Settings & Configs"
 ###### 3. enter the path's to the folders of the appropriate programs
