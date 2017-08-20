@@ -4,11 +4,11 @@ v1.6 - Fixed Issues With Pressing Enter Causing App To Prematuraly Crash
      - Fixed Issues With Wrong Selection Causing CMD To Prematuraly Crash
      - Added Starting System Info Output
 v1.5 - Fixed Error Causing Get Balance To Also Generate New Address
-v1.4 - Fixed Error With Publish Page Interfering with App/Daemon Lauching 
-v1.3 - Update Change Log Location to Auto Find Path
-v1.2 - Updated Send LBC echo's
+v1.4 - Fixed Error With Publish Page Interfering With App/Daemon Lauching 
+v1.3 - Update Change Log Location To Auto Find Path
+v1.2 - Updated Send LBC Echo's
      - Added Almost All CLI Commands
      - 2 New Wallet Menus
 v1.1 - Added More Menus 
-     - Added new CLI commands
-v1.0 - First Realese
+     - Added New CLI Commands
+v1.0 - First Release
