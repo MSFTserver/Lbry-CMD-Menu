@@ -1239,6 +1239,8 @@ echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
 echo Coming Soon!
+ping localhost -n 3 >nul
+goto :RunExitMenu
 Rem Publish
 ::END
 ::
