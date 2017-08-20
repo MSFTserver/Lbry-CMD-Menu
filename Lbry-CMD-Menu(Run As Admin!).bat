@@ -1,22 +1,23 @@
-@echo off
 ::Start
-Rem CMD Window Options
+Rem CMD Options Size & Logs (Dont Touch Please)
+@echo off
 Mode 105, 30
-Rem CMD Window Options
+set LogFile=%~dp0\LbryMenuLog.txt
+set logg=^> _^&^& type _^&^&type _^>^>%LogFile%
+Rem CMD Options Size & Logs (Dont Touch Please)
 ::END
 ::
 ::
 ::
 ::
 ::START
-Rem User Defined Settings & Configs
+Rem User Defined Settings & Configs (Devs This You May Edit)
 set LBRYexeLocation=C:\Program Files (x86)\LBRY
 set DaemonCLIexeLocation=%LBRYexeLocation%\resources\app\dist
 set LBRYname=LBRY.exe
 set DaemonName=lbrynet-daemon.exe
 set CLIname=lbrynet-cli.exe
-set BatchFileLocation=%~dp0
-Rem User Defined Settings & Configs
+Rem User Defined Settings & Configs (Devs This You May Edit)
 ::END
 ::
 ::
@@ -52,11 +53,11 @@ echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
 openfiles >nul 2>&1
-if %ErrorLevel% equ 0 ( goto :LogFileSpecify ) else ( 
+if %ErrorLevel% equ 0 ( goto :Open ) else ( 
 echo You should run the .bat as administrator for Full Functionality.
 echo you may continue to use it without running as admin just note most things wont work.
 ping localhost -n 7 >nul
-goto :LogFileSpecify
+goto :Open
 )
 Rem Running as Admin Check
 ::END
@@ -66,18 +67,6 @@ Rem Running as Admin Check
 ::
 ::START
 Rem Specify Location For Log Files
-:LogFileSpecify
-set LogFile=%BatchFileLocation%\LbryMenuLog.txt
-set logg=^> _^&^& type _^&^&type _^>^>%LogFile%
-goto :Open
-Rem Specify Location For Log Files
-::END
-::
-::
-::
-::
-::START
-Rem Welcome Text
 :Open
 cls
 echo %Logoline1% %logg%
@@ -153,8 +142,8 @@ echo %Logoline7%
 echo           ////////////////////////////////////////////////////////// %logg%
 echo          //                    Lbry Wallet Menu                  // %logg%
 echo         ////////////////////////////////////////////////////////// %logg%
-echo        //b - Current Balance       //a - Address Unused/Empty  // %logg%
-echo       //o - Input Address Balance //g - Generate new address  // %logg%
+echo        //b - Current Balance       //au - Address Unused/Empty  // %logg%
+echo       //o - Input Address Balance //ag - Generate new address  // %logg%
 echo      //w - List of Wallets       //cu - Claimed URI's        // %logg%
 echo     //c - List of Channels      //ca - Abandon Claim        // %logg%
 echo    //k - Wallets Public Key    //s - Send LBC              // %logg%
@@ -162,17 +151,17 @@ echo   //t - Transaction List      //m - More Options          // %logg%
 echo  //ts - Show Specific Trans. //e - Main Menu             // %logg%
 echo ////////////////////////////////////////////////////////// %logg%
 set /p OptionWalletMenu1= Menu Selection:  
-if %OptionWalletMenu1%==b goto :CheckBalance
-if %OptionWalletMenu1%==o goto :CheckBalanceAddress
-if %OptionWalletMenu1%==w goto :WalletList
+if %OptionWalletMenu1%==b goto :AddressBalanceYours
+if %OptionWalletMenu1%==o goto :AddressBalanceOther
+if %OptionWalletMenu1%==w goto :AddressList
 if %OptionWalletMenu1%==c goto :ChannelList
-if %OptionWalletMenu1%==cu goto :AllClaims
+if %OptionWalletMenu1%==cu goto :ClaimList
 if %OptionWalletMenu1%==t goto :TransactionList
-if %OptionWalletMenu1%==s goto :SendLBC
-if %OptionWalletMenu1%==s goto :WalletsPublicKey
-if %OptionWalletMenu1%==a goto :UnusedAddress
-if %OptionWalletMenu1%==g goto :GenerateNewAddress
-if %OptionWalletMenu1%==ca goto :AbandonClaim
+if %OptionWalletMenu1%==s goto :TransactionSendLBC
+if %OptionWalletMenu1%==k goto :AddressPublicKey
+if %OptionWalletMenu1%==au goto :AddressUnused
+if %OptionWalletMenu1%==ag goto :AddressGenerateNew
+if %OptionWalletMenu1%==ca goto :ClaimAbandon
 if %OptionWalletMenu1%==ts goto :TransactionDetails
 if %OptionWalletMenu1%==m goto :WalletMenu2
 if %OptionWalletMenu1%==e goto :MainMenu
@@ -208,16 +197,16 @@ echo   //ba - Announce All Blobs   //b - Go Back               // %logg%
 echo  //db - delete blob          //e - Main Menu             // %logg%
 echo ////////////////////////////////////////////////////////// %logg%
 set /p OptionWalletMenu2= Menu Selection:  
-if %OptionWalletMenu2%==gc goto :GenerateNewChannel
-if %OptionWalletMenu2%==pl goto :PeersList
+if %OptionWalletMenu2%==gc goto :ChannelGenerateNew
+if %OptionWalletMenu2%==pl goto :FilePeersList
 if %OptionWalletMenu2%==lb goto :BlobHashAll
 if %OptionWalletMenu2%==nb goto :BlobHashNeeded
 if %OptionWalletMenu2%==fb goto :BlobHashFinished
 if %OptionWalletMenu2%==fa goto :FileAvailability
-if %OptionWalletMenu2%==fr goto :ReflectFileBlobs
+if %OptionWalletMenu2%==fr goto :BlobReflect
 if %OptionWalletMenu2%==ba goto :BlobAnnounceAll
 if %OptionWalletMenu2%==b goto :BlobAnnounce
-if %OptionWalletMenu2%==db goto :DeleteBlob
+if %OptionWalletMenu2%==db goto :BlobDelete
 if %OptionWalletMenu2%==m goto :WalletMenu3
 if %OptionWalletMenu2%==b goto :WalletMenu1
 if %OptionWalletMenu2%==e goto :MainMenu
@@ -256,14 +245,14 @@ echo /////////////////////////////////////////////////////////// %logg%
 set /p OptionWalletMenu3= Menu Selection:  
 if %OptionWalletMenu3%==cc goto :CustomCommand
 if %OptionWalletMenu3%==cl goto :CommandList
-if %OptionWalletMenu3%==r goto :ResolveURI
-if %OptionWalletMenu3%==fs goto :SetFileStatus
-if %OptionWalletMenu3%==df goto :DownloadFile
-if %OptionWalletMenu3%==ef goto :DeleteFile
+if %OptionWalletMenu3%==r goto :URIResolve
+if %OptionWalletMenu3%==fs goto :FileSetStatus
+if %OptionWalletMenu3%==df goto :FileDownload
+if %OptionWalletMenu3%==ef goto :FileDelete
 if %OptionWalletMenu3%==ac goto :AddressAssociated
-if %OptionWalletMenu3%==sc goto :StreamCostEstimate
-if %OptionWalletMenu3%==rc goto :ResovleChannelName
-if %OptionWalletMenu3%==p goto :Publish
+if %OptionWalletMenu3%==sc goto :URIStreamCostEstimate
+if %OptionWalletMenu3%==rc goto :ChannelResovleName
+if %OptionWalletMenu3%==p goto :URIPublish
 if %OptionWalletMenu3%==b goto :WalletMenu2
 if %OptionWalletMenu3%==e goto :MainMenu
 echo invalid selection %logg%
@@ -324,7 +313,6 @@ echo %Logoline4%
 echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
-echo If Started Before Daemon This CMD Will Host The Daemon The App Launches
 ping localhost -n 2 >nul
 echo starting %LBRYname%... %logg%
 cd "%LBRYexeLocation%"
@@ -360,39 +348,6 @@ echo Note: Let This Run For Atleast a minute Before Starting The App(LBRY.exe) %
 ping localhost -n 5 >nul
 goto :RunExitMenu
 Rem run Lbry daemon
-::END
-::
-::
-::
-::
-::START
-Rem Important Notes!
-:ImportantNotes
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo              //////////////////////////////////////////////////////////////// %logg%
-echo             // Important Notes:                                           // %logg%
-echo            //  1) If App Started Before Daemon This CMD Will Become      // %logg%
-echo           //      The Daemon Host Window                                // %logg%
-echo          //  2) If the Lbry-App(LBRY.exe) Errors out it will cover     // %logg%
-echo         //      menu but is still usable                              // %logg%
-echo        //  3) Upon Closing This CMD Window Will Close The LBRY.exe   // %logg%
-echo       //      if Launched With This App                             // %logg%
-echo      //  4) If Starting Daemon Before LBRY-App wait atleast        // %logg%
-echo     //      1 minute before starting the app                      // %logg%
-echo    //       (it may cause the app to crash if launhced to early) // %logg%
-echo   //  5) All CLI Outputs for account info and more is           // %logg%
-echo  //      in the Log file(LbryMenuLog.txt)                      // %logg%
-echo //////////////////////////////////////////////////////////////// %logg%
-ping localhost -n 6 >nul
-goto :RunExitMenu
-Rem Important Notes!
 ::END
 ::
 ::
@@ -445,8 +400,137 @@ Rem Check Lbry Version
 ::
 ::
 ::START
+Rem Gets Daemon Settings
+:DaemonSettings
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Getting Daemon Settings... %logg%
+echo Daemon Settings: %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% settings_get %logg%
+ping localhost -n 7 >nul
+goto :RunExitMenu
+Rem Gets Daemon Settings
+::END
+::
+::
+::
+::
+::START
+Rem Report bug
+:ReportBug
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo enter the message to send to slack for report %logg%
+set /p BugMessage= 
+ping localhost -n 2 >nul
+echo Reporting Bug... %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% report_bug %BugMessage% %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Report Bug
+::END
+::
+::
+::
+::
+::START
+Rem Important Notes!
+:ImportantNotes
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo              //////////////////////////////////////////////////////////////// %logg%
+echo             // Important Notes:                                           // %logg%
+echo            //  1) If App Started Before Daemon This CMD Will Become      // %logg%
+echo           //      The Daemon Host Window                                // %logg%
+echo          //  2) If the Lbry-App(LBRY.exe) Errors out it will cover     // %logg%
+echo         //      menu but is still usable                              // %logg%
+echo        //  3) Upon Closing This CMD Window Will Close The LBRY.exe   // %logg%
+echo       //      if Launched With This App                             // %logg%
+echo      //  4) If Starting Daemon Before LBRY-App wait atleast        // %logg%
+echo     //      1 minute before starting the app                      // %logg%
+echo    //       (it may cause the app to crash if launhced to early) // %logg%
+echo   //  5) All CLI Outputs for account info and more is           // %logg%
+echo  //      in the Log file(LbryMenuLog.txt)                      // %logg%
+echo //////////////////////////////////////////////////////////////// %logg%
+ping localhost -n 6 >nul
+goto :RunExitMenu
+Rem Important Notes!
+::END
+::
+::
+::
+::
+::START
+Rem Check Wallet List
+:AddressList
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Checking All Wallets Associated With Account... %logg%
+echo Wallets: %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% wallet_list %logg%
+ping localhost -n 7 >nul
+goto :RunExitMenu
+Rem Check Wallet List
+::END
+::
+::
+::
+::
+::START
+Rem Check If Address Is Associated With Your Wallet
+:AddressAssociated
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Check If Address Is Associated With Your Wallet %logg%
+set /p AssociatedAddress= Address : 
+ping localhost -n 2 >nul
+echo Checking If Address(%AssociatedAddress%) is Associated with Your Wallet... %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% wallet_is_address_mine %AssociatedAddress% %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Check If Address Is Associated With Your Wallet
+::END
+::
+::
+::
+::
+::START
 Rem Check Wallet Balance
-:CheckBalance
+:AddressBalanceYours
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -469,7 +553,7 @@ Rem Check Wallet Balance
 ::
 ::START
 Rem Check Wallet Balance Of User Defined Address
-:CheckBalanceAddress
+:AddressBalanceOther
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -494,8 +578,8 @@ Rem Check Wallet Balance Of User Defined Address
 ::
 ::
 ::START
-Rem Check Wallet List
-:WalletList
+Rem Unused Wallet Address
+:AddressUnused
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -504,21 +588,22 @@ echo %Logoline4%
 echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
-echo Checking All Wallets Associated With Account... %logg%
-echo Wallets: %logg%
+echo Finding address containing no balance, will create a new address if there is none... %logg%
+ping localhost -n 2 >nul
+echo Wallet Address: %logg%
 cd "%DaemonCLIexeLocation%"
-%CLIname% wallet_list %logg%
-ping localhost -n 7 >nul
+%CLIname% wallet_unused_address %logg%
+ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Check Wallet List
+Rem Unused Wallet Address
 ::END
 ::
 ::
 ::
 ::
 ::START
-Rem Your Channel List
-:ChannelList
+Rem Generate New Wallet Address
+:AddressGenerateNew
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -527,21 +612,22 @@ echo %Logoline4%
 echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
-echo Checking All Channels Associated With Account... %logg%
-echo My Channels: %logg%
+echo Generating New Wallet Address... %logg%
+ping localhost -n 2 >nul
+echo Wallet Address: %logg%
 cd "%DaemonCLIexeLocation%"
-%CLIname% channel_list_mine %logg%
-ping localhost -n 7 >nul
+%CLIname% wallet_new_address %logg%
+ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Your Channel List
+Rem Generate New Wallet Address
 ::END
 ::
 ::
 ::
 ::
 ::START
-Rem Gets Daemon Settings
-:DaemonSettings
+Rem Wallets Public Key
+:AddressPublicKey
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -550,13 +636,15 @@ echo %Logoline4%
 echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
-echo Getting Daemon Settings... %logg%
-echo Daemon Settings: %logg%
+echo Get Public Key For Address %logg%
+set /p PublicKeyAddress= Address: 
+ping localhost -n 2 >nul
+echo Getting Public Key for Address(%PublicKeyAddress%)... %logg%
 cd "%DaemonCLIexeLocation%"
-%CLIname% settings_get %logg%
-ping localhost -n 7 >nul
+%CLIname% wallet_public_key %PublicKeyAddress% %logg%
+ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Gets Daemon Settings
+Rem Wallets public Key
 ::END
 ::
 ::
@@ -564,7 +652,7 @@ Rem Gets Daemon Settings
 ::
 ::START
 Rem All Your URI Claims
-:AllClaims
+:ClaimList
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -580,6 +668,31 @@ cd "%DaemonCLIexeLocation%"
 ping localhost -n 7 >nul
 goto :RunExitMenu
 Rem All Your URI Claims
+::END
+::
+::
+::
+::
+::START
+Rem Abandon Claim
+:ClaimAbandon
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Abandon a Claim and Get your credits Back %logg%
+set /p AbandonClaimID= Claim ID: 
+ping localhost -n 2 >nul
+echo Abonding Claim With ID(%AbandonClaimID%)... %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% claim_abandon %AbandonClaimID% %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Abandon Claim
 ::END
 ::
 ::
@@ -609,8 +722,8 @@ Rem List of Your Transactions
 ::
 ::
 ::START
-Rem Generate New Channel
-:GenerateNewChannel
+Rem Get Transaction by txid
+:TransactionDetails
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -619,19 +732,15 @@ echo %Logoline4%
 echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
-echo Generate New Channel %logg%
+echo Get Details For Transaction From txid %logg%
+set /p Transactiontxid= txid: 
 ping localhost -n 2 >nul
-set /p NewChannelName= Channel Name: 
-ping localhost -n 2 >nul
-set /p NewChannelNameLBC= Amount(LBC): 
-ping localhost -n 2 >nul
-echo Generating New Channel (%NewChannelName%) with claim amount (%NewChannelNameLBC%)LBC... %logg%
-echo New Channel: %logg%
+echo Getting Transaction... %logg%
 cd "%DaemonCLIexeLocation%"
-%CLIname% channel_new %NewChannelName% %NewChannelNameLBC% %logg%
+%CLIname% transaction_show %Transactiontxid% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Generate New Channel
+Rem Get Transaction by txid
 ::END
 ::
 ::
@@ -639,7 +748,7 @@ Rem Generate New Channel
 ::
 ::START
 Rem Send LBC to Address
-:SendLBC
+:TransactionSendLBC
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -667,8 +776,8 @@ Rem Send LBC to Address
 ::
 ::
 ::START
-Rem Unused Wallet Address
-:UnusedAddress
+Rem Your Channel List
+:ChannelList
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -677,71 +786,21 @@ echo %Logoline4%
 echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
-echo Finding address containing no balance, will create a new address if there is none... %logg%
-ping localhost -n 2 >nul
-echo Wallet Address: %logg%
+echo Checking All Channels Associated With Account... %logg%
+echo My Channels: %logg%
 cd "%DaemonCLIexeLocation%"
-%CLIname% wallet_unused_address %logg%
-ping localhost -n 5 >nul
-goto :RunExitMenu
-Rem Unused Wallet Address
-::END
-::
-::
-::
-::
-::START
-Rem Generate New Wallet Address
-:GenerateNewAddress
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo Generating New Wallet Address... %logg%
-ping localhost -n 2 >nul
-echo Wallet Address: %logg%
-cd "%DaemonCLIexeLocation%"
-%CLIname% wallet_new_address %logg%
-ping localhost -n 5 >nul
-goto :RunExitMenu
-Rem Generate New Wallet Address
-::END
-::
-::
-::
-::
-::START
-Rem Custom Commands List for CLI
-:CommandList
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo List is from CLI API docs %logg%
-echo Loading Custom Commands List... %logg%
-ping localhost -n 3 >nul
-echo Commands: %logg%
-cd "%DaemonCLIexeLocation%"
-%CLIname% commands %logg%
+%CLIname% channel_list_mine %logg%
 ping localhost -n 7 >nul
 goto :RunExitMenu
-Rem Custom Commands List for CLI
+Rem Your Channel List
 ::END
 ::
 ::
 ::
 ::
 ::START
-Rem Custom Command runner
-:CustomCommand
+Rem Generate New Channel
+:ChannelGenerateNew
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -750,24 +809,27 @@ echo %Logoline4%
 echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
-echo enter the custom command as you would normally for the cli %logg%
-echo just continue where "%CLIname%" leaves off for command %logg%
-set /p UserCommand=%CLIname% 
+echo Generate New Channel %logg%
 ping localhost -n 2 >nul
-echo Sending Command to CLI... %logg%
+set /p NewChannelName= Channel Name: 
+ping localhost -n 2 >nul
+set /p NewChannelNameLBC= Amount(LBC): 
+ping localhost -n 2 >nul
+echo Generating New Channel (%NewChannelName%) with claim amount (%NewChannelNameLBC%)LBC... %logg%
+echo New Channel: %logg%
 cd "%DaemonCLIexeLocation%"
-%CLIname% %UserCommand% %logg%
+%CLIname% channel_new %NewChannelName% %NewChannelNameLBC% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Custom Command runner
+Rem Generate New Channel
 ::END
 ::
 ::
 ::
 ::
 ::START
-Rem Report bug
-:ReportBug
+Rem Stream Cost Estimate
+:ChannelResovleName
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -776,15 +838,15 @@ echo %Logoline4%
 echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
-echo enter the message to send to slack for report %logg%
-set /p BugMessage= 
+echo Resovle Channel Name To Get Data %logg%
+set /p ResovleChannel= Channel Name : 
 ping localhost -n 2 >nul
-echo Reporting Bug... %logg%
+echo Resovling Channel(%ResovleChannel%)... %logg%
 cd "%DaemonCLIexeLocation%"
-%CLIname% report_bug %BugMessage% %logg%
+%CLIname% resolve_name %ResovleChannel% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Report Bug
+Rem Stream Cost Estimate
 ::END
 ::
 ::
@@ -863,209 +925,6 @@ Rem Blob Hashes Finished
 ::
 ::
 ::START
-Rem Peers List
-:PeersList
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo Get Peers For Blob Hash %logg%
-set /p PeersListBlobHash= Blob Hash: 
-ping localhost -n 2 >nul
-echo Getting Peers List... %logg%
-cd "%DaemonCLIexeLocation%"
-%CLIname% peer_list %PeersListBlobHash% %logg%
-ping localhost -n 5 >nul
-goto :RunExitMenu
-Rem Peers List
-::END
-::
-::
-::
-::
-::START
-Rem Abandon Claim
-:AbandonClaim
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo Abandon a Claim and Get your credits Back %logg%
-set /p AbandonClaimID= Claim ID: 
-ping localhost -n 2 >nul
-echo Abonding Claim With ID(%AbandonClaimID%)... %logg%
-cd "%DaemonCLIexeLocation%"
-%CLIname% claim_abandon %AbandonClaimID% %logg%
-ping localhost -n 5 >nul
-goto :RunExitMenu
-Rem Abandon Claim
-::END
-::
-::
-::
-::
-::START
-Rem File Availability
-:FileAvailability
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo Get File Availability %logg%
-echo Example: (lbry://burstcoin) %logg%
-set /p FileAvailability= URI: 
-ping localhost -n 2 >nul
-echo Getting File Avalability Please Wait 60 Seconds... %logg%
-echo Result will show like this (Peers per blob / total blobs) %logg%
-cd "%DaemonCLIexeLocation%"
-%CLIname% get_availability --uri=%FileAvailability% --peer_timeout=60 --sd_timeout=60 %logg%
-ping localhost -n 5 >nul
-goto :RunExitMenu
-Rem File Availability
-::END
-::
-::
-::
-::
-::START
-Rem Download File
-:DownloadFile
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo Download File from URI %logg%
-echo Example: (lbry://burstcoin) %logg%
-set /p DownloadFileURI= URI: 
-ping localhost -n 2 >nul
-echo Downloading File(%DownloadFileURI%)... %logg%
-cd "%DaemonCLIexeLocation%"
-%CLIname% get %DownloadFileURI% %logg%
-ping localhost -n 5 >nul
-goto :RunExitMenu
-Rem Download File
-::END
-::
-::
-::
-::
-::START
-Rem Delete File
-:DeleteFile
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo Delete File from Donwnloads %logg%
-set /p DeleteFileName= File Name: 
-ping localhost -n 2 >nul
-echo Deleting File(%DeleteFileName%)... %logg%
-cd "%DaemonCLIexeLocation%"
-%CLIname% file_delete --file_name=%DeleteFileName% %logg%
-ping localhost -n 5 >nul
-goto :RunExitMenu
-Rem Delete File
-::END
-::
-::
-::
-::
-::START
-Rem Delete Blob
-:DeleteBlob
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo Delete Blob from List %logg%
-set /p DeleteBlobHash= Blob Hash: 
-ping localhost -n 2 >nul
-echo Deleting Blob... %logg%
-cd "%DaemonCLIexeLocation%"
-%CLIname% blob_delete %DeleteBlobHash% %logg%
-ping localhost -n 5 >nul
-goto :RunExitMenu
-Rem Delete Blob
-::END
-::
-::
-::
-::
-::START
-Rem File List
-:FileList
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo Getting Files Downloaded And Stored... %logg%
-ping localhost -n 2 >nul
-echo Files: %logg%
-cd "%DaemonCLIexeLocation%"
-%CLIname% file_list -f %logg%
-ping localhost -n 5 >nul
-goto :RunExitMenu
-Rem File List
-::END
-::
-::
-::
-::
-::START
-Rem Resolve Data From URI
-:ResolveURI
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo Resove Data From URI %logg%
-echo Example: (lbry://burstcoin) %logg%
-set /p ResolveURI= URI: 
-ping localhost -n 2 >nul
-echo Resolving Data From (%ResovleURI%)... %logg%
-cd "%DaemonCLIexeLocation%"
-%CLIname% resolve %ResolveURI% %logg%
-ping localhost -n 5 >nul
-goto :RunExitMenu
-Rem Resolve Data From URI
-::END
-::
-::
-::
-::
-::START
 Rem Blob Announce
 :BlobAnnounce
 cls
@@ -1113,58 +972,8 @@ Rem Blob Announce All
 ::
 ::
 ::START
-Rem Get Transaction by txid
-:TransactionDetails
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo Get Details For Transaction From txid %logg%
-set /p Transactiontxid= txid: 
-ping localhost -n 2 >nul
-echo Getting Transaction... %logg%
-cd "%DaemonCLIexeLocation%"
-%CLIname% transaction_show %Transactiontxid% %logg%
-ping localhost -n 5 >nul
-goto :RunExitMenu
-Rem Get Transaction by txid
-::END
-::
-::
-::
-::
-::START
-Rem Wallets Public Key
-:WalletsPublicKey
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo Get Public Key For Address %logg%
-set /p PublicKeyAddress= Address: 
-ping localhost -n 2 >nul
-echo Getting Public Key for Address(%PublicKeyAddress%)... %logg%
-cd "%DaemonCLIexeLocation%"
-%CLIname% wallet_public_key %PublicKeyAddress% %logg%
-ping localhost -n 5 >nul
-goto :RunExitMenu
-Rem Wallets public Key
-::END
-::
-::
-::
-::
-::START
 Rem Reflect File Blobs
-:ReflectFileBlobs
+:BlobReflect
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -1188,8 +997,109 @@ Rem Reflect File Blobs
 ::
 ::
 ::START
+Rem Delete Blob
+:BlobDelete
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Delete Blob from List %logg%
+set /p DeleteBlobHash= Blob Hash: 
+ping localhost -n 2 >nul
+echo Deleting Blob... %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% blob_delete %DeleteBlobHash% %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Delete Blob
+::END
+::
+::
+::
+::
+::START
+Rem File List
+:FileList
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Getting Files Downloaded And Stored... %logg%
+ping localhost -n 2 >nul
+echo Files: %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% file_list -f %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem File List
+::END
+::
+::
+::
+::
+::START
+Rem File Availability
+:FileAvailability
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Get File Availability %logg%
+echo Example: (lbry://burstcoin) %logg%
+set /p FileAvailability= URI: 
+ping localhost -n 2 >nul
+echo Getting File Avalability Please Wait 60 Seconds... %logg%
+echo Result will show like this (Peers per blob / total blobs) %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% get_availability --uri=%FileAvailability% --peer_timeout=60 --sd_timeout=60 %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem File Availability
+::END
+::
+::
+::
+::
+::START
+Rem Peers List
+:FilePeersList
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Get Peers For Blob Hash %logg%
+set /p PeersListBlobHash= Blob Hash: 
+ping localhost -n 2 >nul
+echo Getting Peers List... %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% peer_list %PeersListBlobHash% %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Peers List
+::END
+::
+::
+::
+::
+::START
 Rem Set File Status
-:SetFileStatus
+:FileSetStatus
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -1215,8 +1125,8 @@ Rem Set File Status
 ::
 ::
 ::START
-Rem Check If Address Is Associated With Your Wallet
-:AddressAssociated
+Rem Download File
+:FileDownload
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -1225,15 +1135,67 @@ echo %Logoline4%
 echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
-echo Check If Address Is Associated With Your Wallet %logg%
-set /p AssociatedAddress= Address : 
+echo Download File from URI %logg%
+echo Example: (lbry://burstcoin) %logg%
+set /p DownloadFileURI= URI: 
 ping localhost -n 2 >nul
-echo Checking If Address(%AssociatedAddress%) is Associated with Your Wallet... %logg%
+echo Downloading File(%DownloadFileURI%)... %logg%
 cd "%DaemonCLIexeLocation%"
-%CLIname% wallet_is_address_mine %AssociatedAddress% %logg%
+%CLIname% get %DownloadFileURI% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Check If Address Is Associated With Your Wallet
+Rem Download File
+::END
+::
+::
+::
+::
+::START
+Rem Delete File
+:FileDelete
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Delete File from Donwnloads %logg%
+set /p DeleteFileName= File Name: 
+ping localhost -n 2 >nul
+echo Deleting File(%DeleteFileName%)... %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% file_delete --file_name=%DeleteFileName% %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Delete File
+::END
+::
+::
+::
+::
+::START
+Rem Resolve Data From URI
+:URIResolve
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo Resove Data From URI %logg%
+echo Example: (lbry://burstcoin) %logg%
+set /p ResolveURI= URI: 
+ping localhost -n 2 >nul
+echo Resolving Data From (%ResovleURI%)... %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% resolve %ResolveURI% %logg%
+ping localhost -n 5 >nul
+goto :RunExitMenu
+Rem Resolve Data From URI
 ::END
 ::
 ::
@@ -1241,7 +1203,7 @@ Rem Check If Address Is Associated With Your Wallet
 ::
 ::START
 Rem Stream Cost Estimate
-:StreamCostEstimate
+:URIStreamCostEstimate
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -1266,33 +1228,8 @@ Rem Stream Cost Estimate
 ::
 ::
 ::START
-Rem Stream Cost Estimate
-:ResovleChannelName
-cls
-echo %Logoline1%
-echo %Logoline2%
-echo %Logoline3%
-echo %Logoline4%
-echo %Logoline5%
-echo %Logoline6%
-echo %Logoline7%
-echo Resovle Channel Name To Get Data %logg%
-set /p ResovleChannel= Channel Name : 
-ping localhost -n 2 >nul
-echo Resovling Channel(%ResovleChannel%)... %logg%
-cd "%DaemonCLIexeLocation%"
-%CLIname% resolve_name %ResovleChannel% %logg%
-ping localhost -n 5 >nul
-goto :RunExitMenu
-Rem Stream Cost Estimate
-::END
-::
-::
-::
-::
-::START
 Rem Publisb
-:Publish
+:URIPublish
 cls
 echo %Logoline1%
 echo %Logoline2%
@@ -1302,9 +1239,58 @@ echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
 echo Coming Soon!
+Rem Publish
+::END
+::
+::
+::
+::
+::START
+Rem Custom Command runner
+:CustomCommand
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo enter the custom command as you would normally for the cli %logg%
+echo just continue where "%CLIname%" leaves off for command %logg%
+set /p UserCommand=%CLIname% 
+ping localhost -n 2 >nul
+echo Sending Command to CLI... %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% %UserCommand% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Publish
+Rem Custom Command runner
+::END
+::
+::
+::
+::
+::START
+Rem Custom Commands List for CLI
+:CommandList
+cls
+echo %Logoline1%
+echo %Logoline2%
+echo %Logoline3%
+echo %Logoline4%
+echo %Logoline5%
+echo %Logoline6%
+echo %Logoline7%
+echo List is from CLI API docs %logg%
+echo Loading Custom Commands List... %logg%
+ping localhost -n 3 >nul
+echo Commands: %logg%
+cd "%DaemonCLIexeLocation%"
+%CLIname% commands %logg%
+ping localhost -n 7 >nul
+goto :RunExitMenu
+Rem Custom Commands List for CLI
 ::END
 ::
 ::
@@ -1313,14 +1299,14 @@ Rem Publish
 ::START
 Rem RunExitMenu after stuff
 :RunExitMenu
-echo Press (m) for Main Menu,(w) for Wallet Menu,(h) for Help and Info Menu, and (q) to quit CMD.
+echo Press (m) for Main Menu,(w) for Wallet Menu,(h) for Help and Info Menu, and (q) to quit CMD. %logg%
 set /p OptionStart= Option: 
 if %OptionStart%==q goto :exitCMD
 if %OptionStart%==m goto :MainMenu
 if %OptionStart%==w goto :WalletMenu1
 if %OptionStart%==h goto :InfoMenu
 goto :MainMenu
-Rem RunExitMenu after starting app(s)
+Rem RunExitMenu after stuff
 ::END
 ::
 ::
