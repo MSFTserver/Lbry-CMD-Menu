@@ -5,7 +5,7 @@ set logg=^> _^&^& type _^&^&type _^>^>%~dp0\LbryMenuLog.txt
 
 Rem Settings & Configs (Devs This You May Edit)
 set MenuVersion=1.7
-set CodeLevel=Beta Release
+set CodeLevel=Development
 set User=%username%
 set LBRYexeLocation=C:\Program Files (x86)\LBRY
 set DaemonCLIexeLocation=%LBRYexeLocation%\resources\app\dist
