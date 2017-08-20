@@ -1,29 +1,14 @@
-::Start
 Rem CMD Options Size & Logs (Dont Touch Please)
 @echo off
 Mode 105, 30
 set LogFile=%~dp0\LbryMenuLog.txt
 set logg=^> _^&^& type _^&^&type _^>^>%LogFile%
-Rem CMD Options Size & Logs (Dont Touch Please)
-::END
-::
-::
-::
-::
-::START
 Rem User Defined Settings & Configs (Devs This You May Edit)
 set LBRYexeLocation=C:\Program Files (x86)\LBRY
 set DaemonCLIexeLocation=%LBRYexeLocation%\resources\app\dist
 set LBRYname=LBRY.exe
 set DaemonName=lbrynet-daemon.exe
 set CLIname=lbrynet-cli.exe
-Rem User Defined Settings & Configs (Devs This You May Edit)
-::END
-::
-::
-::
-::
-::START
 REM Logo Text
 title Lbry CMD Menu
 set LogoLine1=                        :::        :::::::::  :::::::::  :::   :::    
@@ -36,13 +21,6 @@ set Logoline7=                  ########## #########  ###    ###    ###
 set WelcomeText1=                           Welcome To LBRY
 set WelcomeText2=                        AIO CMD Menu For Lbry
 set WelcomeText3=                         Coded By: MSFTserver
-Rem Global Vars and Settings
-::END
-::
-::
-::
-::
-::START
 Rem Running as Admin Check
 :AdminCheck
 echo %Logoline1%
@@ -59,13 +37,6 @@ echo you may continue to use it without running as admin just note most things w
 ping localhost -n 7 >nul
 goto :Open
 )
-Rem Running as Admin Check
-::END
-::
-::
-::
-::
-::START
 Rem Specify Location For Log Files
 :Open
 cls
@@ -82,13 +53,6 @@ echo %WelcomeText3% %logg%
 ping localhost -n 5 >nul
 cls
 goto :MainMenu
-Rem Welcome Text
-::END
-::
-::
-::
-::
-::START
 Rem Main Menu
 :MainMenu
 cls
@@ -122,13 +86,6 @@ if %OptionMainMenu%==w goto :WalletMenu1
 echo invalid selection %logg%
 ping localhost -n 3 >nul
 goto :MainMenu
-Rem Main Menu
-::END
-::
-::
-::
-::
-::START
 Rem Wallet Menu
 :WalletMenu1
 cls
@@ -168,13 +125,6 @@ if %OptionWalletMenu1%==e goto :MainMenu
 echo invalid selection %logg%
 ping localhost -n 3 >nul
 goto :WalletMenu1
-Rem Wallet Menu 
-::END
-::
-::
-::
-::
-::START
 Rem Wallet Menu2
 :WalletMenu2
 cls
@@ -214,13 +164,6 @@ if %OptionWalletMenu2%==fl goto :Filelist
 echo invalid selection %logg%
 ping localhost -n 3 >nul
 goto :WalletMenu2
-Rem Wallet Menu2
-::END
-::
-::
-::
-::
-::START
 Rem Wallet Menu3
 :WalletMenu3
 cls
@@ -258,13 +201,6 @@ if %OptionWalletMenu3%==e goto :MainMenu
 echo invalid selection %logg%
 ping localhost -n 3 >nul
 goto :WalletMenu3
-Rem Wallet Menu3
-::END
-::
-::
-::
-::
-::START
 Rem Info and Help Menu
 :InfoMenu
 cls
@@ -296,13 +232,6 @@ if %OptionInfoMenu%==b goto :ReportBug
 echo invalid selection %logg%
 ping localhost -n 3 >nul
 goto :InfoMenu
-Rem Info and Help Menu 
-::END
-::
-::
-::
-::
-::START
 Rem run Lbry App w/out Daemon Window
 :App
 cls
@@ -321,13 +250,6 @@ ping localhost -n 2 >nul
 echo LBRY-App Started %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem run Lbry App w/out Daemon Window
-::END
-::
-::
-::
-::
-::START
 Rem run Lbry daemon
 :Daemon
 cls
@@ -347,13 +269,6 @@ echo Daemon Service Started %logg%
 echo Note: Let This Run For Atleast a minute Before Starting The App(LBRY.exe) %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem run Lbry daemon
-::END
-::
-::
-::
-::
-::START
 Rem Check Lbry Status
 :LbryStatus
 cls
@@ -370,13 +285,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% status %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Check Lbry Status
-::END
-::
-::
-::
-::
-::START
 Rem Check Lbry Version
 :LbryVersion
 cls
@@ -393,13 +301,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% version %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Check Lbry Version
-::END
-::
-::
-::
-::
-::START
 Rem Gets Daemon Settings
 :DaemonSettings
 cls
@@ -416,13 +317,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% settings_get %logg%
 ping localhost -n 7 >nul
 goto :RunExitMenu
-Rem Gets Daemon Settings
-::END
-::
-::
-::
-::
-::START
 Rem Report bug
 :ReportBug
 cls
@@ -441,13 +335,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% report_bug %BugMessage% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Report Bug
-::END
-::
-::
-::
-::
-::START
 Rem Important Notes!
 :ImportantNotes
 cls
@@ -474,13 +361,6 @@ echo  //      in the Log file(LbryMenuLog.txt)                      // %logg%
 echo //////////////////////////////////////////////////////////////// %logg%
 ping localhost -n 6 >nul
 goto :RunExitMenu
-Rem Important Notes!
-::END
-::
-::
-::
-::
-::START
 Rem Check Wallet List
 :AddressList
 cls
@@ -497,13 +377,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% wallet_list %logg%
 ping localhost -n 7 >nul
 goto :RunExitMenu
-Rem Check Wallet List
-::END
-::
-::
-::
-::
-::START
 Rem Check If Address Is Associated With Your Wallet
 :AddressAssociated
 cls
@@ -522,13 +395,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% wallet_is_address_mine %AssociatedAddress% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Check If Address Is Associated With Your Wallet
-::END
-::
-::
-::
-::
-::START
 Rem Check Wallet Balance
 :AddressBalanceYours
 cls
@@ -545,13 +411,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% wallet_balance %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Check Wallet Balance
-::END
-::
-::
-::
-::
-::START
 Rem Check Wallet Balance Of User Defined Address
 :AddressBalanceOther
 cls
@@ -571,13 +430,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% wallet_balance %CheckBalance% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Check Wallet Balance Of User Defined Address
-::END
-::
-::
-::
-::
-::START
 Rem Unused Wallet Address
 :AddressUnused
 cls
@@ -595,13 +447,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% wallet_unused_address %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Unused Wallet Address
-::END
-::
-::
-::
-::
-::START
 Rem Generate New Wallet Address
 :AddressGenerateNew
 cls
@@ -619,13 +464,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% wallet_new_address %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Generate New Wallet Address
-::END
-::
-::
-::
-::
-::START
 Rem Wallets Public Key
 :AddressPublicKey
 cls
@@ -644,13 +482,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% wallet_public_key %PublicKeyAddress% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Wallets public Key
-::END
-::
-::
-::
-::
-::START
 Rem All Your URI Claims
 :ClaimList
 cls
@@ -667,13 +498,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% claim_list_mine %logg%
 ping localhost -n 7 >nul
 goto :RunExitMenu
-Rem All Your URI Claims
-::END
-::
-::
-::
-::
-::START
 Rem Abandon Claim
 :ClaimAbandon
 cls
@@ -692,13 +516,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% claim_abandon %AbandonClaimID% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Abandon Claim
-::END
-::
-::
-::
-::
-::START
 Rem List of Your Transactions
 :TransactionList
 cls
@@ -715,13 +532,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% transaction_list %logg%
 ping localhost -n 7 >nul
 goto :RunExitMenu
-Rem List of Your Transactions
-::END
-::
-::
-::
-::
-::START
 Rem Get Transaction by txid
 :TransactionDetails
 cls
@@ -740,13 +550,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% transaction_show %Transactiontxid% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Get Transaction by txid
-::END
-::
-::
-::
-::
-::START
 Rem Send LBC to Address
 :TransactionSendLBC
 cls
@@ -769,13 +572,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% send_amount_to_address %SendAmount% %SendAddress% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Send LBC to Address
-::END
-::
-::
-::
-::
-::START
 Rem Your Channel List
 :ChannelList
 cls
@@ -792,13 +588,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% channel_list_mine %logg%
 ping localhost -n 7 >nul
 goto :RunExitMenu
-Rem Your Channel List
-::END
-::
-::
-::
-::
-::START
 Rem Generate New Channel
 :ChannelGenerateNew
 cls
@@ -821,13 +610,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% channel_new %NewChannelName% %NewChannelNameLBC% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Generate New Channel
-::END
-::
-::
-::
-::
-::START
 Rem Stream Cost Estimate
 :ChannelResovleName
 cls
@@ -846,13 +628,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% resolve_name %ResovleChannel% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Stream Cost Estimate
-::END
-::
-::
-::
-::
-::START
 Rem Blob Hashes All
 :BlobHashAll
 cls
@@ -870,13 +645,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% blob_list %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Blob Hashes All
-::END
-::
-::
-::
-::
-::START
 Rem Blob Hashes Needed
 :BlobHashNeeded
 cls
@@ -894,13 +662,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% blob_list -n %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Blob Hashes Needed
-::END
-::
-::
-::
-::
-::START
 Rem Blob Hashes Finished
 :BlobHashFinished
 cls
@@ -918,13 +679,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% blob_list -f %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Blob Hashes Finished
-::END
-::
-::
-::
-::
-::START
 Rem Blob Announce
 :BlobAnnounce
 cls
@@ -944,13 +698,6 @@ cd "%DaemonCLIexeLocation%"
 ping localhost -n 5 >nul
 goto :RunExitMenu
 Rem Blob Announce All
-::END
-::
-::
-::
-::
-::START
-Rem Blob Announce All
 :BlobAnnounceAll
 cls
 echo %Logoline1%
@@ -965,13 +712,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% blob_announce_all %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Blob Announce All
-::END
-::
-::
-::
-::
-::START
 Rem Reflect File Blobs
 :BlobReflect
 cls
@@ -990,13 +730,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% file_reflect %ReflectBlob% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Reflect File Blobs
-::END
-::
-::
-::
-::
-::START
 Rem Delete Blob
 :BlobDelete
 cls
@@ -1015,13 +748,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% blob_delete %DeleteBlobHash% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Delete Blob
-::END
-::
-::
-::
-::
-::START
 Rem File List
 :FileList
 cls
@@ -1039,13 +765,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% file_list -f %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem File List
-::END
-::
-::
-::
-::
-::START
 Rem File Availability
 :FileAvailability
 cls
@@ -1066,13 +785,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% get_availability --uri=%FileAvailability% --peer_timeout=60 --sd_timeout=60 %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem File Availability
-::END
-::
-::
-::
-::
-::START
 Rem Peers List
 :FilePeersList
 cls
@@ -1091,13 +803,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% peer_list %PeersListBlobHash% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Peers List
-::END
-::
-::
-::
-::
-::START
 Rem Set File Status
 :FileSetStatus
 cls
@@ -1118,13 +823,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% file_set_status %SetFileStatus2% %SetFileStatus1% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Set File Status
-::END
-::
-::
-::
-::
-::START
 Rem Download File
 :FileDownload
 cls
@@ -1144,13 +842,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% get %DownloadFileURI% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Download File
-::END
-::
-::
-::
-::
-::START
 Rem Delete File
 :FileDelete
 cls
@@ -1169,13 +860,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% file_delete --file_name=%DeleteFileName% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Delete File
-::END
-::
-::
-::
-::
-::START
 Rem Resolve Data From URI
 :URIResolve
 cls
@@ -1195,13 +879,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% resolve %ResolveURI% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Resolve Data From URI
-::END
-::
-::
-::
-::
-::START
 Rem Stream Cost Estimate
 :URIStreamCostEstimate
 cls
@@ -1221,14 +898,7 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% stream_cost_estimate %EstimateCostURI% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Stream Cost Estimate
-::END
-::
-::
-::
-::
-::START
-Rem Publisb
+Rem Publish
 :URIPublish
 cls
 echo %Logoline1%
@@ -1241,13 +911,6 @@ echo %Logoline7%
 echo Coming Soon!
 ping localhost -n 3 >nul
 goto :RunExitMenu
-Rem Publish
-::END
-::
-::
-::
-::
-::START
 Rem Custom Command runner
 :CustomCommand
 cls
@@ -1267,13 +930,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% %UserCommand% %logg%
 ping localhost -n 5 >nul
 goto :RunExitMenu
-Rem Custom Command runner
-::END
-::
-::
-::
-::
-::START
 Rem Custom Commands List for CLI
 :CommandList
 cls
@@ -1292,13 +948,6 @@ cd "%DaemonCLIexeLocation%"
 %CLIname% commands %logg%
 ping localhost -n 7 >nul
 goto :RunExitMenu
-Rem Custom Commands List for CLI
-::END
-::
-::
-::
-::
-::START
 Rem RunExitMenu after stuff
 :RunExitMenu
 echo Press (m) for Main Menu,(w) for Wallet Menu,(h) for Help and Info Menu, and (q) to quit CMD. %logg%
@@ -1308,13 +957,6 @@ if %OptionStart%==m goto :MainMenu
 if %OptionStart%==w goto :WalletMenu1
 if %OptionStart%==h goto :InfoMenu
 goto :MainMenu
-Rem RunExitMenu after stuff
-::END
-::
-::
-::
-::
-::START
 Rem Exit CMD Window 
 :exitCMD
 cls
@@ -1368,13 +1010,6 @@ echo %Logoline7%
 echo Exiting CMD(Complete)... %logg%
 ping localhost -n 4 >nul
 exit /b %logg%
-Rem Exit CMD Window
-::END
-::
-::
-::
-::
-::START
 Rem Exit Daemon Window 
 :exitDaemon
 cls
@@ -1432,13 +1067,6 @@ echo Exiting Daemon(Complete)... %logg%
 echo Note: Upon Closing This CMD Window Will Close The LBRY.exe if Launched With This App
 ping localhost -n 4 >nul
 goto :RunExitMenu
-Rem Exit Daemon Window
-::END
-::
-::
-::
-::
-::START
 Rem Exit LBRY APP 
 :exitAPP
 cls
@@ -1493,13 +1121,6 @@ echo %Logoline7%
 echo Exiting APP(Complete)... %logg%
 ping localhost -n 4 >nul
 goto :RunExitMenu
-Rem Exit LBRY APP
-::END
-::
-::
-::
-::
-::START
 Rem Exit LBRY APP 
 :exitAPPandDAEMON
 cls
@@ -1558,13 +1179,6 @@ echo %Logoline7%
 echo Exiting Daemon(Complete)... %logg%
 ping localhost -n 4 >nul
 goto :RunExitMenu
-Rem Exit LBRY APP
-::END
-::
-::
-::
-::
-::START
 Rem Exit LBRY APP 
 :exitALL
 cls
@@ -1653,5 +1267,3 @@ echo %Logoline7%
 echo Exiting CMD(Complete)... %logg%
 ping localhost -n 4 >nul
 exit /b %logg%
-Rem Exit LBRY APP
-::END
