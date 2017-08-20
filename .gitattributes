@@ -1,6 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-# Exclude from git archive / GitHub tarballs.
- /script export-ignore
+# Exclude From Release
  .gitattributes export-ignore
  README.md export-ignore
