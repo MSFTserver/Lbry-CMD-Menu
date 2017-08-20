@@ -6,7 +6,7 @@ set logg=^> _^&^& type _^&^&type _^>^>%LogFile%
 Rem User Defined Settings & Configs (Devs This You May Edit)
 set LBRYexeLocation=C:\Program Files (x86)\LBRY
 set DaemonCLIexeLocation=%LBRYexeLocation%\resources\app\dist
-set LBRYname=LBRY.exe
+set LBRYname=LBRY.exe %logg%
 set DaemonName=lbrynet-daemon.exe
 set CLIname=lbrynet-cli.exe
 REM Logo Text
@@ -51,7 +51,6 @@ echo %WelcomeText1% %logg%
 echo %WelcomeText2% %logg%
 echo %WelcomeText3% %logg%
 ping localhost -n 5 >nul
-cls
 goto :MainMenu
 Rem Main Menu
 :MainMenu
@@ -73,7 +72,7 @@ echo    //kd - Kill the Daemon     //                           // %logg%
 echo   //kb - Kill App and Daemon //                           // %logg%
 echo  //k - Kill all Processes   //e - Exit This Window       // %logg%
 echo ////////////////////////////////////////////////////////// %logg%
-set /p OptionMainMenu= Menu Selection:  
+set /p OptionMainMenu= Menu Selection: ||set OptionMainMenu=invalid
 if %OptionMainMenu%==sa goto :App
 if %OptionMainMenu%==sd goto :Daemon
 if %OptionMainMenu%==e goto :exitCMD
@@ -83,10 +82,11 @@ if %OptionMainMenu%==kb goto :exitAPPandDAEMON
 if %OptionMainMenu%==k goto :exitALL
 if %OptionMainMenu%==h goto :InfoMenu
 if %OptionMainMenu%==w goto :WalletMenu1
+if not "%OptionMainMenu%"=="sa" if not "%OptionMainMenu%"=="sd" if not "%OptionMainMenu%"=="e" if not "%OptionMainMenu%"=="kd" if not "%OptionMainMenu%"=="ka" if not "%OptionMainMenu%"=="kb" if not "%OptionMainMenu%"=="k" if not "%OptionMainMenu%"=="h" if not "%OptionMainMenu%"=="w" (
 echo invalid selection %logg%
 ping localhost -n 3 >nul
 goto :MainMenu
-Rem Wallet Menu
+)
 :WalletMenu1
 cls
 echo %Logoline1%
@@ -107,7 +107,7 @@ echo    //k - Wallets Public Key    //s - Send LBC              // %logg%
 echo   //t - Transaction List      //m - More Options          // %logg%
 echo  //ts - Show Specific Trans. //e - Main Menu             // %logg%
 echo ////////////////////////////////////////////////////////// %logg%
-set /p OptionWalletMenu1= Menu Selection:  
+set /p OptionWalletMenu1= Menu Selection: ||set OptionWalletMenu1=invalid
 if %OptionWalletMenu1%==b goto :AddressBalanceYours
 if %OptionWalletMenu1%==o goto :AddressBalanceOther
 if %OptionWalletMenu1%==w goto :AddressList
@@ -121,10 +121,12 @@ if %OptionWalletMenu1%==ag goto :AddressGenerateNew
 if %OptionWalletMenu1%==ca goto :ClaimAbandon
 if %OptionWalletMenu1%==ts goto :TransactionDetails
 if %OptionWalletMenu1%==m goto :WalletMenu2
-if %OptionWalletMenu1%==e goto :MainMenu
+if %OptionWalletMenu1%==e goto :Open
+if not "%OptionWalletMenu1%"=="b" if not "%OptionWalletMenu1%"=="o" if not "%OptionMWalletMenu1%"=="w" if not "%OptionWalletMenu1%"=="c" if not "%OptionWalletMenu1%"=="cu" if not "%OptionWalletMenu1%"=="t" if not "%OptionWalletMenu1%"=="s" if not "%OptionWalletMenu1%"=="k" if not "%OptionWalletMenu1%"=="au" if not "%OptionWalletMenu1%"=="ag" if not "%OptionWalletMenu1%"=="ca" if not "%OptionWalletMenu1%"=="ts" if not "%OptionWalletMenu1%"=="m" if not "%OptionWalletMenu1%"=="e" (
 echo invalid selection %logg%
 ping localhost -n 3 >nul
 goto :WalletMenu1
+)
 Rem Wallet Menu2
 :WalletMenu2
 cls
@@ -142,11 +144,11 @@ echo        //gc - Generate New Channel //pl - Peers List           // %logg%
 echo       //lb - List Blobs           //fl - Files List           // %logg%
 echo      //nb - List Needed Blobs    //fa - File Availability    // %logg%
 echo     //fb - List Finished Blobs  //fr - Reflect File Blobs   // %logg%
-echo    //b - Announce Blob         //m - More                  // %logg%
+echo    //ab - Announce Blob        //m - More                  // %logg%
 echo   //ba - Announce All Blobs   //b - Go Back               // %logg%
 echo  //db - delete blob          //e - Main Menu             // %logg%
 echo ////////////////////////////////////////////////////////// %logg%
-set /p OptionWalletMenu2= Menu Selection:  
+set /p OptionWalletMenu2= Menu Selection: ||set OptionWalletMenu2=invalid
 if %OptionWalletMenu2%==gc goto :ChannelGenerateNew
 if %OptionWalletMenu2%==pl goto :FilePeersList
 if %OptionWalletMenu2%==lb goto :BlobHashAll
@@ -159,11 +161,13 @@ if %OptionWalletMenu2%==b goto :BlobAnnounce
 if %OptionWalletMenu2%==db goto :BlobDelete
 if %OptionWalletMenu2%==m goto :WalletMenu3
 if %OptionWalletMenu2%==b goto :WalletMenu1
-if %OptionWalletMenu2%==e goto :MainMenu
+if %OptionWalletMenu2%==e goto :Open
 if %OptionWalletMenu2%==fl goto :Filelist
+if not "%OptionWalletMenu2%"=="gc" if not "%OptionWalletMenu2%"=="pl" if not "%OptionWalletMenu2%"=="lb" if not "%OptionWalletMenu2%"=="nb" if not "%OptionWalletMenu2%"=="fb" if not "%OptionWalletMenu2%"=="fa" if not "%OptionWalletMenu2%"=="fr" if not "%OptionWalletMenu2%"=="ba" if not "%OptionWalletMenu2%"=="ab" if not "%OptionWalletMenu2%"=="db" if not "%OptionWalletMenu2%"=="m" if not "%OptionWalletMenu2%"=="b" if not "%OptionWalletMenu2%"=="e" if not "%OptionWalletMenu2%"=="fl" (
 echo invalid selection %logg%
 ping localhost -n 3 >nul
 goto :WalletMenu2
+)
 Rem Wallet Menu3
 :WalletMenu3
 cls
@@ -185,7 +189,7 @@ echo    //ef - Erase/Delete File     //                          // %logg%
 echo   //fs - Set Status Of File    //b - Go Back               // %logg%
 echo  //sc - Stream Cost Estimate  //e - Main Menu             // %logg%
 echo /////////////////////////////////////////////////////////// %logg%
-set /p OptionWalletMenu3= Menu Selection:  
+set /p OptionWalletMenu3= Menu Selection: ||set OptionWalletMenu3=invalid
 if %OptionWalletMenu3%==cc goto :CustomCommand
 if %OptionWalletMenu3%==cl goto :CommandList
 if %OptionWalletMenu3%==r goto :URIResolve
@@ -197,10 +201,12 @@ if %OptionWalletMenu3%==sc goto :URIStreamCostEstimate
 if %OptionWalletMenu3%==rc goto :ChannelResovleName
 if %OptionWalletMenu3%==p goto :URIPublish
 if %OptionWalletMenu3%==b goto :WalletMenu2
-if %OptionWalletMenu3%==e goto :MainMenu
+if %OptionWalletMenu3%==e goto :Open
+if not "%OptionWalletMenu3%"=="cc" if not "%OptionWalletMenu3%"=="cl" if not "%OptionWalletMenu3%"=="r" if not "%OptionWalletMenu3%"=="fs" if not "%OptionWalletMenu3%"=="df" if not "%OptionWalletMenu3%"=="ef" if not "%OptionWalletMenu3%"=="ac" if not "%OptionWalletMenu3%"=="sc" if not "%OptionWalletMenu3%"=="rc" if not "%OptionWalletMenu3%"=="p" if not "%OptionWalletMenu3%"=="b" if not "%OptionWalletMenu3%"=="e" (
 echo invalid selection %logg%
 ping localhost -n 3 >nul
 goto :WalletMenu3
+)
 Rem Info and Help Menu
 :InfoMenu
 cls
@@ -221,17 +227,19 @@ echo    //d - Get Daemon Settings   //b - Report Bug           // %logg%
 echo   //                          //w - Wallet Menu          // %logg%
 echo  //                          //m - Main Menu            // %logg%
 echo ///////////////////////////////////////////////////////// %logg%
-set /p OptionInfoMenu= Menu Selection: 
+set /p OptionInfoMenu= Menu Selection: ||set OptionInfoMenu=invalid
 if %OptionInfoMenu%==n goto :ImportantNotes
 if %OptionInfoMenu%==w goto :WalletMenu1
-if %OptionInfoMenu%==m goto :MainMenu
+if %OptionInfoMenu%==m goto :Open
 if %OptionInfoMenu%==s goto :LbryStatus
 if %OptionInfoMenu%==v goto :LbryVersion
 if %OptionInfoMenu%==d goto :DaemonSettings
 if %OptionInfoMenu%==b goto :ReportBug
+if not "%OptionInfoMenu%"=="n" if not "%OptionInfoMenu%"=="w" if not "%OptionInfoMenu%"=="m" if not "%OptionInfoMenu%"=="s" if not "%OptionInfoMenu%"=="v" if not "%OptionInfoMenu%"=="d" if not "%OptionInfoMenu%"=="b" (
 echo invalid selection %logg%
 ping localhost -n 3 >nul
 goto :InfoMenu
+)
 Rem run Lbry App w/out Daemon Window
 :App
 cls
@@ -951,12 +959,15 @@ goto :RunExitMenu
 Rem RunExitMenu after stuff
 :RunExitMenu
 echo Press (m) for Main Menu,(w) for Wallet Menu,(h) for Help and Info Menu, and (q) to quit CMD. %logg%
-set /p OptionStart= Option: 
+set /p OptionStart= Option: ||set OptionStart=invalid
 if %OptionStart%==q goto :exitCMD
-if %OptionStart%==m goto :MainMenu
+if %OptionStart%==m goto :Open
 if %OptionStart%==w goto :WalletMenu1
 if %OptionStart%==h goto :InfoMenu
-goto :MainMenu
+if not "%OptionWalletMenu3%"=="g" if not "%OptionWalletMenu3%"=="m" if not "%OptionWalletMenu3%"=="w" if not "%OptionWalletMenu3%"=="h" (
+echo Invalid Selection Returning To Main Menu
+goto :Open
+)
 Rem Exit CMD Window 
 :exitCMD
 cls
