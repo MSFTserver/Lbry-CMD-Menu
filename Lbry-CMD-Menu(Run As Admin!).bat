@@ -4,11 +4,11 @@ Mode 105, 30
 set LogFile=%~dp0\LbryMenuLog.txt
 set logg=^> _^&^& type _^&^&type _^>^>%LogFile%
 Rem User Defined Settings & Configs (Devs This You May Edit)
-set LBRYexeLocation=C:\Program Files (x86)\LBRY
-set DaemonCLIexeLocation=%LBRYexeLocation%\resources\app\dist
-set LBRYname=LBRY.exe
-set DaemonName=lbrynet-daemon.exe
-set CLIname=lbrynet-cli.exe
+set LBRYexeLocation=C:\Program Files (x86)\LBRY %logg%
+set DaemonCLIexeLocation=%LBRYexeLocation%\resources\app\dist %logg%
+set LBRYname=LBRY.exe %logg%
+set DaemonName=lbrynet-daemon.exe %logg%
+set CLIname=lbrynet-cli.exe %logg%
 REM Logo Text
 title Lbry CMD Menu
 set LogoLine1=                        :::        :::::::::  :::::::::  :::   :::    
@@ -32,8 +32,8 @@ echo %Logoline6%
 echo %Logoline7%
 openfiles >nul 2>&1
 if %ErrorLevel% equ 0 ( goto :Open ) else ( 
-echo You should run the .bat as administrator for Full Functionality.
-echo you may continue to use it without running as admin just note most things wont work.
+echo You should run the .bat as administrator for Full Functionality. %logg%
+echo you may continue to use it without running as admin just note most things wont work. %logg%
 ping localhost -n 7 >nul
 goto :Open
 )
@@ -1119,6 +1119,7 @@ echo %Logoline5%
 echo %Logoline6%
 echo %Logoline7%
 echo Exiting APP(Complete)... %logg%
+echo Note: Daemon Window Will Still Run After App Shutdown %logg%
 ping localhost -n 4 >nul
 goto :RunExitMenu
 Rem Exit LBRY APP 
