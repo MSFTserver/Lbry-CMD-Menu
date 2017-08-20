@@ -4,11 +4,11 @@ Mode 105, 30
 set LogFile=%~dp0\LbryMenuLog.txt
 set logg=^> _^&^& type _^&^&type _^>^>%LogFile%
 Rem User Defined Settings & Configs (Devs This You May Edit)
-set LBRYexeLocation=C:\Program Files (x86)\LBRY %logg%
-set DaemonCLIexeLocation=%LBRYexeLocation%\resources\app\dist %logg%
-set LBRYname=LBRY.exe %logg%
-set DaemonName=lbrynet-daemon.exe %logg%
-set CLIname=lbrynet-cli.exe %logg%
+set LBRYexeLocation=C:\Program Files (x86)\LBRY
+set DaemonCLIexeLocation=%LBRYexeLocation%\resources\app\dist
+set LBRYname=LBRY.exe
+set DaemonName=lbrynet-daemon.exe
+set CLIname=lbrynet-cli.exe
 REM Logo Text
 title Lbry CMD Menu
 set LogoLine1=                        :::        :::::::::  :::::::::  :::   :::    
