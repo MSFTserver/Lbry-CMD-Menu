@@ -1,12 +1,14 @@
 Rem CMD Options Size & Logs (Dont Touch Please)
 @echo off
 Mode 105, 30
-set LogFile=%~dp0\LbryMenuLog.txt
-set logg=^> _^&^& type _^&^&type _^>^>%LogFile%
-Rem User Defined Settings & Configs (Devs This You May Edit)
+set logg=^> _^&^& type _^&^&type _^>^>%~dp0\LbryMenuLog.txt
+Rem Settings & Configs (Devs This You May Edit)
+set MenuVersion=1.6
+set CodeLevel=Beta Release
+set User=%username%
 set LBRYexeLocation=C:\Program Files (x86)\LBRY
 set DaemonCLIexeLocation=%LBRYexeLocation%\resources\app\dist
-set LBRYname=LBRY.exe %logg%
+set LBRYname=LBRY.exe
 set DaemonName=lbrynet-daemon.exe
 set CLIname=lbrynet-cli.exe
 REM Logo Text
@@ -18,9 +20,6 @@ set LogoLine4=                     +#+        +#++:++#+  +#++:++#:    +#++:
 set Logoline5=                    +#+        +#+    +#+ +#+    +#+    +#+           
 set LogoLine6=                   #+#        #+#    #+# #+#    #+#    #+#            
 set Logoline7=                  ########## #########  ###    ###    ###             
-set WelcomeText1=                           Welcome To LBRY
-set WelcomeText2=                        AIO CMD Menu For Lbry
-set WelcomeText3=                         Coded By: MSFTserver
 Rem Running as Admin Check
 :AdminCheck
 echo %Logoline1%
@@ -34,7 +33,7 @@ openfiles >nul 2>&1
 if %ErrorLevel% equ 0 ( goto :Open ) else ( 
 echo You should run the .bat as administrator for Full Functionality. %logg%
 echo you may continue to use it without running as admin just note most things wont work. %logg%
-ping localhost -n 7 >nul
+ping localhost -n 10 >nul
 goto :Open
 )
 Rem Specify Location For Log Files
@@ -47,9 +46,21 @@ echo %Logoline4% %logg%
 echo %Logoline5% %logg%
 echo %Logoline6% %logg%
 echo %Logoline7% %logg%
-echo %WelcomeText1% %logg%
-echo %WelcomeText2% %logg%
-echo %WelcomeText3% %logg%
+echo                               Welcome To LBRY %logg%
+echo                       This is a AIO CMD Menu For Lbry %logg%
+echo                            Coded By: MSFTserver %logg%
+echo . %logg%
+echo                   Lbry Install Info: %logg%
+echo                       Menu Version: %MenuVersion% %logg%
+echo                       Code Level: %CodeLevel% %logg%
+echo                       Instance Started By (%user%) %logg%
+echo                       Menu Location: %~dp0 %logg%
+echo                       Log File: %~dp0\LbryMenuLog.txt %logg%
+echo                       App (LBRY.exe) Location: %LBRYexeLocation% %logg%
+echo                       Daemon/CLI exe Location: %DaemonCLIexeLocation% %logg%
+echo                       App name: %LBRYname% %logg%
+echo                       Daemon Name: %DaemonName% %logg%
+echo                       CLI name: %CLIname% %logg%
 ping localhost -n 5 >nul
 goto :MainMenu
 Rem Main Menu
@@ -961,12 +972,12 @@ Rem RunExitMenu after stuff
 echo Press (m) for Main Menu,(w) for Wallet Menu,(h) for Help and Info Menu, and (q) to quit CMD. %logg%
 set /p OptionStart= Option: ||set OptionStart=invalid
 if %OptionStart%==q goto :exitCMD
-if %OptionStart%==m goto :Open
+if %OptionStart%==m goto :MainMenu
 if %OptionStart%==w goto :WalletMenu1
 if %OptionStart%==h goto :InfoMenu
 if not "%OptionWalletMenu3%"=="g" if not "%OptionWalletMenu3%"=="m" if not "%OptionWalletMenu3%"=="w" if not "%OptionWalletMenu3%"=="h" (
 echo Invalid Selection Returning To Main Menu
-goto :Open
+goto :MainMenu
 )
 Rem Exit CMD Window 
 :exitCMD
