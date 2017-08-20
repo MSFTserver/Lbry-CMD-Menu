@@ -1,4 +1,7 @@
 Change Log
+v1.6 - Fixed Issues With Pressing Enter Causing App To Crash
+     - Fixed Issues Withe Wrong Selection Causing CMD To Crash
+     - Added Starting System Info Output
 v1.5 - Fixed Error Causing Get Balance To Also Generate New Address
 v1.4 - Fixed Error With Publsih Page interfering with App/Daemon Lauching 
 v1.3 - Update Change Log Location to Auto Find Path
