@@ -26,6 +26,10 @@ ___
 v.17 
      
      - Fixed Issue With Exit Menu Causing CMD To Prematuraly Crash
+	 
+	 - Fixed Isuues Causing Menu's To Not Properly Go To Exit Menu
+	 
+	 - Added System Information In Help Menu
 
 v1.6 
 

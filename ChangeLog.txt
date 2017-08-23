@@ -1,5 +1,7 @@
 Change Log
-v.17 - Fixed Issue With Exit Menu Causing CMD To Prematuraly Crash
+v1.7 - Fixed Issue With Exit Menu Causing CMD To Prematuraly Crash
+	 - Fixed Isuues Causing Menu's To Not Properly Go To Exit Menu
+	 - Added System Information In Help Menu
 v1.6 - Fixed Issues With Pressing Enter Causing App To Prematuraly Crash
      - Fixed Issues With Wrong Selection Causing CMD To Prematuraly Crash
      - Added Starting System Info Output
