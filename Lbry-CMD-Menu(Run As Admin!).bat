@@ -11,7 +11,7 @@ if "%menusecs:~0,1%" == " " set menusecs=0%menusecs:~1,1%
 
 Rem Settings & Configs (Devs This You May Edit)
 set MenuVersion=1.7
-set CodeLevel=Development
+set CodeLevel=ReleaseBeta
 set User=%username%
 set LBRYexeLocation=C:\Program Files (x86)\LBRY
 set DaemonCLIexeLocation=%LBRYexeLocation%\resources\app\dist
