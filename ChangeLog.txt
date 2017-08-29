@@ -5,13 +5,13 @@ v1.8 - Development(Master Branch)
 	 
 v1.7 - Released
 	 - Fixed Issue With Exit Menu Causing CMD To Prematuraly Crash
-     - Fixed Issues Causing Menu's To Not Properly Go To Exit Menu
-     - Added System Information In Help Menu
+     	 - Fixed Issues Causing Menu's To Not Properly Go To Exit Menu
+     	 - Added System Information In Help Menu
 	 
 v1.6 - Released
 	 - Fixed Issues With Pressing Enter Causing App To Prematuraly Crash
-     - Fixed Issues With Wrong Selection Causing CMD To Prematuraly Crash
-     - Added Starting System Info Output
+    	 - Fixed Issues With Wrong Selection Causing CMD To Prematuraly Crash
+    	 - Added Starting System Info Output
 	 
 v1.5 - Released
 	 - Fixed Error Causing Get Balance To Also Generate New Address
@@ -24,12 +24,12 @@ v1.3 - Released
 	 
 v1.2 - Released
 	 - Updated Send LBC Echo's
-     - Added Almost All CLI Commands
-     - 2 New Wallet Menus
+    	 - Added Almost All CLI Commands
+    	 - 2 New Wallet Menus
 	 
 v1.1 - Released
 	 - Added More Menus 
-     - Added New CLI Commands
+    	 - Added New CLI Commands
 	 
 v1.0 - Released
 	 - First Release
