@@ -23,13 +23,13 @@ ___
 ___
 ### Change Log
 
-v1.8 
+v1.8 - Development(Master Branch)
 
 	 - Added More System Info Checks For Other Systems
 	 
 	 - Waiting For New Realease To Add New Daemon Functionality
 
-v1.7 
+v1.7 - Released
      
      - Fixed Issue With Exit Menu Causing CMD To Prematuraly Crash
 	 
@@ -37,7 +37,7 @@ v1.7
 	 
      - Added System Information In Help Menu
 
-v1.6 
+v1.6 - Released
 
      - Fixed Issues With Pressing Enter Causing App To Prematuraly Crash
 
@@ -45,19 +45,19 @@ v1.6
      
      - Added Starting System Info Output
      
-v1.5 
+v1.5 - Released
 
      - Fixed Error Causing Get Balance To Also Generate New Address
 
-v1.4 
+v1.4 - Released
 
      - Fixed Error With Publish Page Interfering With App/Daemon Lauching 
 
-v1.3 
+v1.3 - Released
 
      - Update Change Log Location To Auto Find Path
 
-v1.2 
+v1.2 - Released
 
      - Updated Send LBC Echo's
 
@@ -65,13 +65,13 @@ v1.2
      
      - 2 New Wallet Menus
      
-v1.1 
+v1.1 - Released
 
      - Added More Menus 
 
      - Added New CLI Commands
      
-v1.0 
+v1.0 - Released
 
      - First Release
 
