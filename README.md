@@ -23,13 +23,13 @@ ___
 ___
 ### Change Log
 
-v1.8 - Development(Master Branch)
+[v1.8 - Development(Master Branch)](https://github.com/MSFTserver/Lbry-CMD-Menu/archive/master.zip)
 
 	 - Added More System Info Checks For Other Systems
 	 
 	 - Waiting For New Realease To Add New Daemon Functionality
 
-v1.7 - Released
+[v1.7 - Released](https://github.com/MSFTserver/Lbry-CMD-Menu/releases/tag/v1.7-BETA)
      
      - Fixed Issue With Exit Menu Causing CMD To Prematuraly Crash
 	 
@@ -37,7 +37,7 @@ v1.7 - Released
 	 
      - Added System Information In Help Menu
 
-v1.6 - Released
+[v1.6 - Released](https://github.com/MSFTserver/Lbry-CMD-Menu/releases/tag/v1.6-BETA)
 
      - Fixed Issues With Pressing Enter Causing App To Prematuraly Crash
 
@@ -45,19 +45,19 @@ v1.6 - Released
      
      - Added Starting System Info Output
      
-v1.5 - Released
+[v1.5 - Released](https://github.com/MSFTserver/Lbry-CMD-Menu/releases/tag/v1.5-BETA)
 
      - Fixed Error Causing Get Balance To Also Generate New Address
 
-v1.4 - Released
+[v1.4 - Released](https://github.com/MSFTserver/Lbry-CMD-Menu/releases/tag/v1.4-BETA)
 
      - Fixed Error With Publish Page Interfering With App/Daemon Lauching 
 
-v1.3 - Released
+[v1.3 - Released](https://github.com/MSFTserver/Lbry-CMD-Menu/releases/tag/v1.3-BETA)
 
      - Update Change Log Location To Auto Find Path
 
-v1.2 - Released
+[v1.2 - Released](https://github.com/MSFTserver/Lbry-CMD-Menu/releases/tag/v1.2-BETA)
 
      - Updated Send LBC Echo's
 
@@ -65,13 +65,13 @@ v1.2 - Released
      
      - 2 New Wallet Menus
      
-v1.1 - Released
+[v1.1 - Released](https://github.com/MSFTserver/Lbry-CMD-Menu/releases/tag/v1.1-BETA)
 
      - Added More Menus 
 
      - Added New CLI Commands
      
-v1.0 - Released
+[v1.0 - Released](https://github.com/MSFTserver/Lbry-CMD-Menu/releases/tag/v1.0-BETA)
 
      - First Release
 
