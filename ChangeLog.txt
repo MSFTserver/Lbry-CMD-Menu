@@ -1,4 +1,6 @@
 Change Log
+v1.8 - Added More System Info Checks For Other Systems
+	 - Waiting For New Realease To Add New Daemon Functionality
 v1.7 - Fixed Issue With Exit Menu Causing CMD To Prematuraly Crash
      - Fixed Issues Causing Menu's To Not Properly Go To Exit Menu
      - Added System Information In Help Menu

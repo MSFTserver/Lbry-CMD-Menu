@@ -18,10 +18,15 @@ ___
 ###### 1. If the Lbry-App(LBRY.exe) Errors out it will cover menu but is still usable
 ###### 2. Upon Closing This CMD Window Will Close The LBRY.exe if Launched With This App
 ###### 3. If Starting Daemon Before LBRY-App wait atleast 1 minute before starting the app
-###### (it may cause the app to crash if launhced to early)
+###### (it may cause the app to crash if launched to early)
 ###### 4. All CLI Outputs for account info and more is in the Log file(LbryMenuLog.txt)
 ___
 ### Change Log
+
+v1.8 
+	 - Added More System Info Checks For Other Systems
+	 
+	 - Waiting For New Realease To Add New Daemon Functionality
 
 v1.7 
      
@@ -91,6 +96,6 @@ or use one of options below
 
 [Crypto Instagram: @MSFTserver](https://www.instagram.com/msftserver/)
 
-[Main Instagram: @MSFTserver](https://www.instagram.com/compvapelife/)
+[Main Instagram: @CompVapeLife](https://www.instagram.com/compvapelife/)
 
 [Discord: @MSFTserver#2901](https://discord.gg/Ce3t3FW)
