@@ -24,6 +24,7 @@ ___
 ### Change Log
 
 v1.8 
+
 	 - Added More System Info Checks For Other Systems
 	 
 	 - Waiting For New Realease To Add New Daemon Functionality
