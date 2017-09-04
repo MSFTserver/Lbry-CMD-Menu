@@ -10,15 +10,21 @@ ___
 ###### 1. Start Editing the .bat in any text editor of choice
 ###### 2. Edit the first section labeled: "Dev Settings & Configs"
 ###### 3. enter the path's to the folders of the appropriate programs
-######    (default paths have been left)
+```diff
+-(default paths have been left)
+```
 ###### 4. Start the daemon Then wait atleast 1min or for all blobs to finish processing to start the App!
-######    (Otherwise the app will throw an error and force close itself)
+```diff
+-(Otherwise the app will throw an error and force close itself)
+```
 ___
 **Important Notes:**
 ###### 1. If the Lbry-App(LBRY.exe) Errors out it will cover menu but is still usable
 ###### 2. Upon Closing This CMD Window Will Close The LBRY.exe if Launched With This App
 ###### 3. If Starting Daemon Before LBRY-App wait atleast 1 minute before starting the app
-###### (it may cause the app to crash if launched to early)
+```diff
+-(it may cause the app to crash if launched to early)
+```
 ###### 4. All CLI Outputs for account info and more is in the Log file(LbryMenuLog.txt)
 ___
 ### Change Log
