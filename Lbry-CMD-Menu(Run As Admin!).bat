@@ -10,7 +10,7 @@ if "%menumin:~0,1%" == " " set menumin=0%menumin:~1,1%
 if "%menusecs:~0,1%" == " " set menusecs=0%menusecs:~1,1%
 
 Rem Settings & Configs (Devs This You May Edit)
-set MenuVersion=1.7
+set MenuVersion=1.8
 set CodeLevel=Development
 set User=%username%
 set LBRYexeLocation=C:\Program Files (x86)\LBRY
