@@ -124,8 +124,8 @@ echo %Logoline7%
 echo           ////////////////////////////////////////////////////////// %logg%
 echo          //                    Lbry Wallet Menu                  // %logg%
 echo         ////////////////////////////////////////////////////////// %logg%
-echo        //b - Current Balance       //au - Address Unused/Empty  // %logg%
-echo       //o - Input Address Balance //ag - Generate new address  // %logg%
+echo        //b - Current Balance       //au - Address Unused/Empty // %logg%
+echo       //o - Input Address Balance //ag - Generate new address // %logg%
 echo      //w - List of Wallets       //cu - Claimed URI's        // %logg%
 echo     //c - List of Channels      //ca - Abandon Claim        // %logg%
 echo    //k - Wallets Public Key    //s - Send LBC              // %logg%
