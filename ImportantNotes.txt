@@ -2,7 +2,7 @@
 //               LBRY CMD Menu                  //
 //           Created by: MSFTserver             //
 //        a AIO CMD for everything LBRY         //
-//      Check For Updates on GitHib Please      //
+//      Check For Updates on GitHub Please      //
 // https://github.com/MSFTserver/Lbry-CMD-Menu  //
 //////////////////////////////////////////////////
 
